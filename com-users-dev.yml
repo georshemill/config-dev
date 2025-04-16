@@ -1,0 +1,6 @@
+# Configuración de com-users para entorno dev
+server:
+  port: 8020
+spring:
+  application:
+    name: com-users

@@ -1,0 +1,61 @@
+# application.yml Base con configuración para SQL Server y HikariCP
+
+
+# Configuración de la conexión a la base de datos
+spring:
+  datasource:
+    url: jdbc:sqlserver://apisistemas.ddns.net:1433;databaseName=securitydb;encrypt=false;trustServerCertificate=true;
+    username: sa
+    password: "987654abc%"
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver  # Driver de SQL Server
+    hikari:
+      pool-name: HikariCP  # Nombre del pool de conexiones
+      maximum-pool-size: 20  # Tamaño máximo del pool de conexiones
+      minimum-idle: 5  # Número mínimo de conexiones inactivas que se mantienen
+      idle-timeout: 30000  # Tiempo máximo (ms) que una conexión inactiva puede permanecer en el pool
+      max-lifetime: 600000  # Tiempo máximo (ms) de vida de una conexión en el pool
+      connection-timeout: 30000  # Tiempo máximo (ms) para obtener una conexión del pool
+      validation-timeout: 5000  # Tiempo (ms) para validar una conexión antes de ser utilizada
+      leak-detection-threshold: 15000  # Detectar posibles fugas de conexión si no se cierran en este tiempo (ms)
+    jpa:
+      hibernate:
+        ddl-auto: update  # Opciones: none, validate, update, create
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.SQLServerDialect  # Dialecto específico para SQL Server
+          format_sql: true  # Formato de SQL más legible
+          show_sql: true  # Muestra las sentencias SQL ejecutadas en consola
+
+# Configuración de logging
+logging:
+  level:
+    root: INFO  # Nivel de logging global, puedes ajustarlo (DEBUG, ERROR, WARN, etc.)
+    org.springframework.web: DEBUG  # Nivel de log para solicitudes web
+
+# Configuración para Health Check (si usas Actuator)
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://zipkin-server:9411/api/v2/spans
+  endpoints:
+    web:
+      exposure:
+        include: health, info  # Exposición de endpoints para monitoreo
+  health:
+    db:
+      enabled: true  # Verificación de estado de la base de datos
+
+# Configuración de CORS (si tus microservicios se comunican con frontends de otro dominio)
+# web:
+#   cors:
+#     allowed-origins: "http://localhost:4200"  # Dominio del frontend, ajusta según sea necesario
+
+# Configuración de Eureka (si usas Eureka)
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+  
