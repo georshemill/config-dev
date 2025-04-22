@@ -4,7 +4,7 @@
 # Configuración de la conexión a la base de datos
 spring:
   datasource:
-    url: jdbc:sqlserver://apisistemas.ddns.net:1433;databaseName=securitydb;encrypt=false;trustServerCertificate=true;
+    url: jdbc:sqlserver://apisistemas.ddns.net:1433;databaseName=managerDB;encrypt=false;trustServerCertificate=true;
     username: sa
     password: "159753#%$vps%"
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver  # Driver de SQL Server
