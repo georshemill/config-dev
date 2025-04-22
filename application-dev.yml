@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:sqlserver://apisistemas.ddns.net:1433;databaseName=securitydb;encrypt=false;trustServerCertificate=true;
     username: sa
-    password: "987654abc%"
+    password: "159753#%$vps%"
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver  # Driver de SQL Server
     hikari:
       pool-name: HikariCP  # Nombre del pool de conexiones
@@ -18,7 +18,7 @@ spring:
       leak-detection-threshold: 15000  # Detectar posibles fugas de conexión si no se cierran en este tiempo (ms)
     jpa:
       hibernate:
-        ddl-auto: update  # Opciones: none, validate, update, create
+        ddl-auto: none  # Opciones: none, validate, update, create
       properties:
         hibernate:
           dialect: org.hibernate.dialect.SQLServerDialect  # Dialecto específico para SQL Server
