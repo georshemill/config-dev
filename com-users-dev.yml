@@ -4,3 +4,26 @@ server:
 spring:
   application:
     name: com-users
+  datasource:
+    url: jdbc:sqlserver://apisistemas.ddns.net:1433;databaseName=securitydb;encrypt=false;trustServerCertificate=true;
+    username: sa
+    password: "159753#%$vps%"
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver  # Driver de SQL Server
+    hikari:
+      pool-name: HikariCP  # Nombre del pool de conexiones
+      maximum-pool-size: 20  # Tamaño máximo del pool de conexiones
+      minimum-idle: 5  # Número mínimo de conexiones inactivas que se mantienen
+      idle-timeout: 30000  # Tiempo máximo (ms) que una conexión inactiva puede permanecer en el pool
+      max-lifetime: 600000  # Tiempo máximo (ms) de vida de una conexión en el pool
+      connection-timeout: 30000  # Tiempo máximo (ms) para obtener una conexión del pool
+      validation-timeout: 5000  # Tiempo (ms) para validar una conexión antes de ser utilizada
+      leak-detection-threshold: 15000  # Detectar posibles fugas de conexión si no se cierran en este tiempo (ms)
+    jpa:
+      hibernate:
+        ddl-auto: update  # Opciones: none, validate, update, create
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.SQLServerDialect  # Dialecto específico para SQL Server
+          format_sql: true  # Formato de SQL más legible
+          show_sql: true  # Muestra las sentencias SQL ejecutadas en consola
+

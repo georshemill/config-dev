@@ -19,7 +19,7 @@ spring:
       leak-detection-threshold: 15000  # Detectar posibles fugas de conexión si no se cierran en este tiempo (ms)
     jpa:
       hibernate:
-        ddl-auto: update  # Opciones: none, validate, update, create
+        ddl-auto: none  # Opciones: none, validate, update, create
       properties:
         hibernate:
           dialect: org.hibernate.dialect.SQLServerDialect  # Dialecto específico para SQL Server
@@ -58,4 +58,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka-server:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${random.value}
   
