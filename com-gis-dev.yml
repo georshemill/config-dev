@@ -1,1 +1,7 @@
 # Configuración de com-gis para entorno dev
+spring:
+  rabbitmq:
+    host: http://rabbitmq
+    port: 5672
+    username: user
+    password: pass

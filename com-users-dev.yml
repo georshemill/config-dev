@@ -1,7 +1,13 @@
 # Configuración de com-users para entorno dev
+
 server:
   port: 8020
-spring:
+spring:  
+  rabbitmq:
+    host: http://rabbitmq
+    port: 5672
+    username: user
+    password: pass
   application:
     name: com-users
   datasource:
@@ -26,4 +32,4 @@ spring:
           dialect: org.hibernate.dialect.SQLServerDialect  # Dialecto específico para SQL Server
           format_sql: true  # Formato de SQL más legible
           show_sql: true  # Muestra las sentencias SQL ejecutadas en consola
-
+# Configuración de logging
