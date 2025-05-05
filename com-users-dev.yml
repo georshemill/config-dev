@@ -1,17 +1,17 @@
 # Configuración de com-users para entorno dev
 
 server:
-  port: 8020
+  port: 8079
 spring:  
-  rabbitmq:
-    host: http://rabbitmq
-    port: 5672
-    username: user
-    password: pass
+  # rabbitmq:
+  #   host: http://rabbitmq
+  #   port: 5672
+  #   username: user
+  #   password: pass
   application:
     name: com-users
   datasource:
-    url: jdbc:sqlserver://apisistemas.ddns.net:1433;databaseName=securitydb;encrypt=false;trustServerCertificate=true;
+    url: jdbc:sqlserver://apisistemas.ddns.net:1433;databaseName=managerDB;encrypt=false;trustServerCertificate=true;
     username: sa
     password: "159753#%$vps%"
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver  # Driver de SQL Server
@@ -26,7 +26,7 @@ spring:
       leak-detection-threshold: 15000  # Detectar posibles fugas de conexión si no se cierran en este tiempo (ms)
     jpa:
       hibernate:
-        ddl-auto: update  # Opciones: none, validate, update, create
+        ddl-auto: none  # Opciones: none, validate, update, create
       properties:
         hibernate:
           dialect: org.hibernate.dialect.SQLServerDialect  # Dialecto específico para SQL Server
